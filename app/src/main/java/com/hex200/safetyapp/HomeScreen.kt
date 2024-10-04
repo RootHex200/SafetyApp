@@ -2,7 +2,15 @@
 
 package com.hex200.safetyapp
 
+import android.graphics.Color
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -23,7 +31,14 @@ import kotlinx.coroutines.launch
 @Composable
 
 fun HomeScreen(){
-    Scaffold {padding->
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(onClick = { /*TODO*/ }) {
+                Icon(Icons.Filled.Add, "Floating action button.")
+            }
+        },
+        floatingActionButtonPosition = FabPosition.End
+    ) {padding->
         val singapore = LatLng(1.35, 103.87)
         val singaporeMarkerState = rememberMarkerState(position = singapore)
         val cameraPositionState = rememberCameraPositionState {
@@ -37,6 +52,7 @@ fun HomeScreen(){
                     durationMs = 500
                 )
             }
+
         }
         GoogleMap(
             modifier = Modifier.fillMaxSize(),
