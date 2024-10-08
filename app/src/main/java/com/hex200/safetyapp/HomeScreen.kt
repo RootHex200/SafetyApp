@@ -60,6 +60,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import com.hex200.safetyapp.ui.common.GoogleMapView
 
 @Composable
 fun HomeScreen(scaffoldPadding: PaddingValues){
@@ -103,15 +104,6 @@ fun HomeScreen(scaffoldPadding: PaddingValues){
             }
 
         }
-        GoogleMap(
-            modifier = Modifier.fillMaxSize(),
-            cameraPositionState = cameraPositionState
-        ) {
-            Marker(
-                state = singaporeMarkerState,
-                title = "Singapore",
-                snippet = "Marker in Singapore"
-            )
-        }
+        GoogleMapView(cameraPositionState,singaporeMarkerState)
     }
 }
