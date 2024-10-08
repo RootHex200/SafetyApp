@@ -88,7 +88,7 @@ fun BottomNavigationPageView(){
     ) {scaffoldPadding->
         when(currentRoute){
             "home"-> HomeScreen(scaffoldPadding)
-            "police"-> PoliceStationScreen()
+            "police"-> PoliceStationScreen(scaffoldPadding)
             "history"-> HistoryScreen(scaffoldPadding)
             "profile"-> ProfileScreen()
         }
