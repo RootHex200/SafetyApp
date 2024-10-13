@@ -90,7 +90,7 @@ fun BottomNavigationPageView(){
             "home"-> HomeScreen(scaffoldPadding)
             "police"-> PoliceStationScreen(scaffoldPadding)
             "history"-> HistoryScreen(scaffoldPadding)
-            "profile"-> ProfileScreen()
+            "profile"-> ProfileScreen(scaffoldPadding)
         }
     }
 }

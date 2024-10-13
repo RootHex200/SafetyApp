@@ -79,7 +79,7 @@ fun HistoryScreen(scaffoldPadding: PaddingValues){
             Spacer(modifier = Modifier.height(20.dp).padding(padding))
             //history listview item
             LazyColumn (
-                modifier = Modifier.padding(padding),
+                modifier = Modifier.padding(top = padding.calculateTopPadding()),
                 content = {
                     items(10, itemContent = {
                         val singaporeMarkerState = rememberMarkerState(position = singapore)
