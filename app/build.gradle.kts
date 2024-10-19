@@ -61,7 +61,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
+    val nav_version = "2.8.2"
 
+    implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation ("com.google.maps.android:maps-compose:6.1.2")
     implementation ("com.google.accompanist:accompanist-permissions:0.26.2-beta")
     // Google Maps Compose utility library

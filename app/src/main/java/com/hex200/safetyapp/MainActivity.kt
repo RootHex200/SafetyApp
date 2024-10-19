@@ -33,6 +33,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.hex200.safetyapp.core.route.AppNavigation
 import com.hex200.safetyapp.ui.theme.SafetyAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,15 +43,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SafetyAppTheme {
-                BottomNavigationPageView()
+                AppNavigation()
             }
         }
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
-fun BottomNavigationPageView(){
+fun BottomNavigationPageView(navController: NavController){
     val navItem= listOf(
         BottomNavBarItem("Home",Icons.Rounded.Home,"home"),
         BottomNavBarItem("Police",Icons.Rounded.Build,"police"),
@@ -90,7 +92,7 @@ fun BottomNavigationPageView(){
             "home"-> HomeScreen(scaffoldPadding)
             "police"-> PoliceStationScreen(scaffoldPadding)
             "history"-> HistoryScreen(scaffoldPadding)
-            "profile"-> ProfileScreen(scaffoldPadding)
+            "profile"-> ProfileScreen(scaffoldPadding,navController)
         }
     }
 }

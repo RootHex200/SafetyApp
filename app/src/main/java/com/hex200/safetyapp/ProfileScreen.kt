@@ -43,7 +43,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
+import com.hex200.safetyapp.core.route.Routes
 import com.hex200.safetyapp.ui.theme.editProfileButtonColor
 import com.hex200.safetyapp.ui.theme.editProfileShadwoColor
 import com.hex200.safetyapp.ui.theme.profileCardbackgroundcolor
@@ -53,7 +56,7 @@ import com.hex200.safetyapp.ui.theme.sosCustomizationShadowColor
 
 @Composable
 
-fun ProfileScreen(scaffoldPadding: PaddingValues){
+fun ProfileScreen(scaffoldPadding: PaddingValues,navController: NavController){
     val selectedImage= remember { mutableStateOf<Uri?>(null) }
 
     val photoPicker= rememberLauncherForActivityResult(
@@ -122,7 +125,9 @@ fun ProfileScreen(scaffoldPadding: PaddingValues){
                         modifier = Modifier
                             .border(width = 3.dp, color = editProfileShadwoColor, shape = CircleShape)
                             .clip(shape = CircleShape)
-                            .background(color = editProfileButtonColor),
+                            .background(color = editProfileButtonColor).clickable {
+                                navController.navigate(Routes.EDIT_PROFILE.toString())
+                            },
                         contentAlignment = Alignment.Center,
                         content = {
                             Row(
@@ -198,12 +203,19 @@ fun ProfileScreen(scaffoldPadding: PaddingValues){
                         content = {
                             Row (
                                 horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
 
                             ){
                                 Text("Emergency contract", style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 19.sp))
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Box(
-                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp).clip(shape = RoundedCornerShape(15.dp)).background(color = editProfileButtonColor),
+                                    modifier = Modifier
+                                        .height(30.dp)
+                                        .width(70.dp)
+                                        .clip(shape = RoundedCornerShape(15.dp))
+                                        .background(color = editProfileButtonColor)
+                                        ,
+                                    contentAlignment = Alignment.Center,
                                     content = {
                                         Text("Family", style = TextStyle(fontWeight = FontWeight.Bold))
                                     }
@@ -220,6 +232,8 @@ fun ProfileScreen(scaffoldPadding: PaddingValues){
                 }
             )
 
+            Spacer(modifier = Modifier.height(20.dp))
+
             
         }
 
@@ -229,5 +243,5 @@ fun ProfileScreen(scaffoldPadding: PaddingValues){
 @Composable
 
 fun Previews(){
-    ProfileScreen(scaffoldPadding = PaddingValues(10.dp))
+    ProfileScreen(scaffoldPadding = PaddingValues(10.dp), navController = rememberNavController())
 }
